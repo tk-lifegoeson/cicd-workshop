@@ -12,5 +12,3 @@ RUN curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-${
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
 	&& chmod +x ./kubectl \
 	&& mv ./kubectl /usr/local/bin/kubectl
-
-RUN git config --global --unset http.postBuffer
