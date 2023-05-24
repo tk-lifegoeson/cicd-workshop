@@ -17,6 +17,8 @@ spec:
       volumes:
       - name: dind-storage
         emptyDir: {}
+      - name: jenkins-home
+        emptyDir: {}
       containers:
       - name: jenkins
         image: supaket/jenkins:latest
@@ -24,6 +26,9 @@ spec:
         ports:
         - containerPort: 8080
         - containerPort: 50000
+        volumeMounts:
+        - name: jenkins-home
+          mountPath: /var/jenkins_home
         env:
         - name: DOCKER_HOST
           value: tcp://localhost:2375
