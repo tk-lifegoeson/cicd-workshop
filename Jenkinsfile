@@ -1,9 +1,14 @@
 pipeline {
   agent any
   stages {
-    stage('Docker Build') {
+    stage('Build') {
       steps {
         sh "docker build -t supaket/podinfo:${env.BUILD_NUMBER} ."
+      }
+    }
+    stage('Test'){
+       steps {
+        sh "echo 'Test'"
       }
     }
     stage('Docker Push') {
