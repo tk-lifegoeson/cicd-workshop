@@ -24,7 +24,7 @@ pipeline {
         sh "docker rmi supaket/podinfo:${env.BUILD_NUMBER}"
       }
     }
-    stage('Apply Kubernetes Files') {
+    stage('Deploy') {
       steps {
           withKubeConfig([credentialsId: 'kubeconfig']) {
           sh 'cat deployment.yaml | sed "s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g" | kubectl apply -f -'
