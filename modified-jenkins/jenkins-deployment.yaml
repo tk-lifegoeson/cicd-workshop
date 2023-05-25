@@ -18,7 +18,8 @@ spec:
       - name: dind-storage
         emptyDir: {}
       - name: jenkins-home
-        emptyDir: {}
+        persistentVolumeClaim:
+          claimName: jenkins-pvc
       containers:
       - name: jenkins
         image: supaket/jenkins:latest
