@@ -29,8 +29,8 @@ pipeline {
       steps {
         withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
           sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-          sh "docker push supaket/podinfo:${env.BUILD_NUMBER}"
-          sh "docker rmi supaket/podinfo:${env.BUILD_NUMBER}"
+          sh "docker push lifegoeson/podinfo:${env.BUILD_NUMBER}"
+          sh "docker rmi lifegoeson/podinfo:${env.BUILD_NUMBER}"
         }
       }
     }
