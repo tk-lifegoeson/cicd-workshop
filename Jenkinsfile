@@ -36,7 +36,7 @@ pipeline {
     }
     stage('Docker Remove Image') {
       steps {
-        sh "docker rmi supaket/podinfo:${env.BUILD_NUMBER}"
+        sh "docker rmi lifegoeson/podinfo:${env.BUILD_NUMBER}"
       }
     }
     stage('Deploy') {
