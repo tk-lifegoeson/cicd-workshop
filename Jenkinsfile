@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh "docker build -t supaket/podinfo:${env.BUILD_NUMBER} ."
+        sh "docker build -t lifegoeson/podinfo:${env.BUILD_NUMBER} ."
       }
     }
     stage('Test'){
@@ -13,9 +13,12 @@ pipeline {
     }
     stage('Security scan'){
       steps {
-        sh "npm install snyk@latest -g"
+        withCredentials([string(credentialsId: 'snyk-api-token', variable: 'snykToken')]){
+        sh "snyk auth ${snykToken}"
         sh "snyk test"
-    }
+        sh "snyk monitor --all-projects"
+        }
+      }
     }
     stage('Docker Push') {
       steps {
