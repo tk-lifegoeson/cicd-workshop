@@ -22,7 +22,7 @@ spec:
           claimName: jenkins-pvc
       containers:
       - name: jenkins
-        image: supaket/jenkins:latest
+        image: lifegoeson/jenkins:latest
         imagePullPolicy: Never
         ports:
         - containerPort: 8080
