@@ -34,11 +34,11 @@ pipeline {
         }
       }
     }
-    stage('Docker Remove Image') {
-      steps {
-        sh "docker rmi lifegoeson/podinfo:${env.BUILD_NUMBER}"
-      }
-    }
+ //   stage('Docker Remove Image') {
+ //     steps {
+ //       sh "docker rmi lifegoeson/podinfo:${env.BUILD_NUMBER}"
+ //     }
+ //   }
     stage('Deploy') {
       steps {
           withKubeConfig([credentialsId: 'kubeconfig']) {
