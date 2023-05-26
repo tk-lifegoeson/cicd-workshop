@@ -43,7 +43,8 @@ pipeline {
         }
       }
   }
-  post {
+  }
+post {
         success {
           slackSend(message: "Pipeline is successfully completed.")
         }
@@ -51,5 +52,4 @@ pipeline {
           slackSend(message: "Pipeline failed. Please check the logs.")
         }
       }
-}
 }
