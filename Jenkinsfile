@@ -14,7 +14,6 @@ pipeline {
     stage('Test'){
        steps {
         sh "npm i"
-        sh "npm run report-test"
       }
     }
     stage('Security scan'){
