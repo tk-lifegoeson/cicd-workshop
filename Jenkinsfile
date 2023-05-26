@@ -20,6 +20,12 @@ pipeline {
         always {
             junit '**/junit.xml'
         }
+        success {
+          slackSend(message: "Pipeline is successfully completed.")
+        }
+        failure {
+          slackSend(message: "Pipeline failed. Please check the logs. http://localhost:8080/job/cicd1/${BUILD_NUMBER}")
+        }
       }
     }
     stage('Security scan'){
@@ -48,13 +54,5 @@ pipeline {
         }
       }
   }
-}
-post {
-    success {
-      slackSend(message: "Pipeline is successfully completed.")
-    }
-    failure {
-      slackSend(message: "Pipeline failed. Please check the logs.")
-    }
 }
 }
