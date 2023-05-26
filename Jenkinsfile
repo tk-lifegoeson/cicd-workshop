@@ -43,8 +43,8 @@ pipeline {
         }
       }
   }
-  }
-post {
+}
+  post {
         success {
           slackSend(message: "Pipeline is successfully completed.")
         }
