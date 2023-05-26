@@ -4,7 +4,13 @@ const app = require('../app');
 describe('GET /healthcheck', () => {
   it('responds with status: UP', async () => {
     const response = await request(app).get('/healthcheck');
-    expect(response.statusCode).toBe(400);
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toEqual({ status: 'UP' });
+  });
+
+  it('responds with status: UP', async () => {
+    const response = await request(app).get('/getpodinfo');
+    expect(response.statusCode).toBe(200);
     expect(response.body).toEqual({ status: 'UP' });
   });
 });
